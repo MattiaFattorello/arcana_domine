@@ -4,34 +4,36 @@
 
 Obbiettivo del progetto è la creazione di un sistema per gestire i dati dei partecipanti alle attività di Arcana Domine, persistere e rendere disponibili i dati di gioco per la campagna principale di AD, slegare definitivamente il forum dalle attività di gioco e di gestione.
 Per raggiungere questi obbiettivi vanno risolti i seguenti punti:
-*Gestione PG
+
+**Gestione PG**
 *	Creazione
 *	Richiesta talenti
 *	Missive
-*Gestione Staff
+
+**Gestione Staff**
 *	PNG
 *	Timetable
 *	Cartellini
-*	Gestione PG
-*		Approvazione PG
-*		Approvazione Talenti
-*		Assegnazione PP
-*		Gogna
-*		Stato PG (morte, parcheggio)
-*	Reportistica
-*		Partecipanti a evento
-*		Azioni Economiche
-*		Iscritti Anno XXXX
-*Gestione Giocatori
+*	Approvazione PG
+*	Approvazione Talenti
+*	Assegnazione PP
+*	Gogna
+*	Stato PG (morte, parcheggio)
+*	Partecipanti a evento
+*	Azioni Economiche
+*	Iscritti
+
+**Gestione segreteria**
 *	Iscrizione AD
 *	CSEN 
-*Gestione Eventi
 *	Gestione partecipanti
 *	Gestione pagamenti
-*Interfaccia
+
+**Interfaccia**
 *	Web
 *	(Opzionale) Mobile 
-*Mail 
+
+**Mail** 
 *	Iscrizione
 *	Conferma / rifiuto pg
 *	Conferma / rifiuto talento
@@ -58,9 +60,9 @@ Attualmente il sito e la sua gestione utenti è basato su wordpress, gli svilupp
 ## Wordpress - https://wordpress.org/
 Il frontend web di riferimento sarà sempre WP
 ###	WP_Social_Login 
-	Plug-in per SSO con google e facebook
-	Altri Plugin
-	Varie ed eventuali
+Plug-in per SSO con google e facebook
+###	Altri Plugin
+###	Varie ed eventuali
 
 ## Fpdf - http://www.fpdf.org/
 Libreria php per la creazione di pdf. Usato per la creazione di cartellini.
@@ -86,8 +88,8 @@ Funzioni e nomi variabili camelCase, nomi classi CamelCase con prima lettera Mai
 
 # Future implementazioni
 
-*Sistema di backup automatico?
-*Miglioramento stile sito?
-*Sistema di Pagamento online
-*Sistema di gestione eventi + lettore QRcode per la segreteria [esempio](https://wordpress.org/plugins/easy-paypal-events-tickets/)
+* Sistema di backup automatico?
+* Miglioramento stile sito?
+* Sistema di Pagamento online
+* Sistema di gestione eventi + lettore QRcode per la segreteria [esempio](https://wordpress.org/plugins/easy-paypal-events-tickets/)
 
