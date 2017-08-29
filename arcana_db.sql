@@ -16,26 +16,16 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Database: `arcana_db`
---
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `aree_talenti`
---
-
 CREATE TABLE `aree_talenti` (
-  `id_area_talenti` int(10) NOT NULL,
-  `nome_area_telenti` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `aree_talenti`
 --
 
-INSERT INTO `aree_talenti` (`id_area_talenti`, `nome_area_telenti`) VALUES
+INSERT INTO `aree_talenti` (`id`, `nome`) VALUES
 (1, 'Talenti Base'),
 (2, 'Vicolo'),
 (3, 'Resistenza'),
@@ -57,14 +47,10 @@ INSERT INTO `aree_talenti` (`id_area_talenti`, `nome_area_telenti`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `aree_talenti_razze`
---
-
 CREATE TABLE `aree_talenti_razze` (
-  `id_razza` int(10) NOT NULL,
-  `id_area` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_razza` INT(10) NOT NULL,
+    `id_area` INT(10) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `aree_talenti_razze`
@@ -153,21 +139,17 @@ INSERT INTO `aree_talenti_razze` (`id_razza`, `id_area`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `azioni_economiche`
---
-
 CREATE TABLE `azioni_economiche` (
-  `id_azione` int(10) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `descrizione` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45) NOT NULL,
+    `descrizione` TEXT
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `azioni_economiche`
 --
 
-INSERT INTO `azioni_economiche` (`id_azione`, `nome`, `descrizione`) VALUES
+INSERT INTO `azioni_economiche` (`id`, `nome`, `descrizione`) VALUES
 (1, 'Lavorare', 'Il personaggio ottiene una rendita fissa decisa dallo Staff (solitamente in denaro)'),
 (2, 'Cercare', 'Un giocatore può chiedere che lo Staff inserisca in gioco durante l’evento uno tra: informazioni su un argomento desiderato, un determinato oggetto, un personaggio non giocante (solitamente un Maestro con dati talenti), una specifica creatura rara. Lo Staff s’impegnerà al meglio per attuare la richiesta, ma non è assolutamente certo che il personaggio ottenga automaticamente ciò che sta cercando. Un dato oggetto potrebbe essere in mano ad un nemico o nascosto, un personaggio non giocante potrebbe entrare in gioco per un periodo di tempo limitato, le informazioni cercate potrebbero essere in mano ad altri. Si consiglia di impegnarsi comunque al meglio per non lasciarsi sfuggire l’occasione e impedire di essere battuti sul tempo da altri.'),
 (3, 'Attivare Talento', 'Un personaggio può attivare uno o più tra i seguenti talenti (Conoscenze, Raccattasoldi, Mercato Nero, Voce Suadente, le Arti e i Talenti per la Creazione come spiegati nel Sommo Compendio). Si ricorda che un personaggio DEVE possedere le risorse necessarie alla creazione degli oggetti alla fine dell’ultimo evento a cui ha partecipato (Ufficiale o Cena in Gioco), e deve consegnarli durante la Segreteria Pre-Evento, prima di ricevere altre risorse o rendite. NON è possibile aiutare un altro personaggio nella creazione di oggetti. Mercato Nero consente inoltre di mettere all’asta oggetti posseduti, lasciandoli temporaneamente allo Staff, che provvederà a metterli in lista per l’evento successivo a quello in cui il talento è stato attivato.'),
@@ -179,49 +161,37 @@ INSERT INTO `azioni_economiche` (`id_azione`, `nome`, `descrizione`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `cartellini`
---
-
 CREATE TABLE `cartellini` (
-  `id_cartellino` int(10) NOT NULL,
-  `nome` varchar(255) DEFAULT NULL,
-  `fattura` varchar(255) DEFAULT NULL,
-  `requisiti` varchar(255) DEFAULT NULL,
-  `testo` text,
-  `tipologia` int(11) DEFAULT NULL,
-  `formato` bit(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(255) DEFAULT NULL,
+    `fattura` VARCHAR(255) DEFAULT NULL,
+    `requisiti` VARCHAR(255) DEFAULT NULL,
+    `testo` TEXT,
+    `tipologia` INT(11) DEFAULT NULL,
+    `formato` BIT(1) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
-
---
--- Struttura della tabella `domande_feedback`
---
 
 CREATE TABLE `domande_feedback` (
-  `id_evento` int(11) NOT NULL,
-  `id_domanda` int(11) NOT NULL,
-  `domanda` text CHARACTER SET latin1 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_evento` INT(10) NOT NULL,
+    `id_domanda` INT(10) NOT NULL,
+    `domanda` TEXT CHARACTER SET LATIN1 NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `eventi`
---
-
 CREATE TABLE `eventi` (
-  `id_evento` int(10) NOT NULL,
-  `nome` varchar(45) NOT NULL,
-  `data` date NOT NULL,
-  `descrizione` text,
-  `luogo` varchar(45) DEFAULT NULL,
-  `pp` int(2) DEFAULT NULL,
-  `url` varchar(45) DEFAULT NULL,
-  `stato` tinyint(1) NOT NULL DEFAULT '0',
-  `costo` int(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45) NOT NULL,
+    `data` DATE NOT NULL,
+    `descrizione` TEXT,
+    `luogo` VARCHAR(45) DEFAULT NULL,
+    `pp` INT(2) DEFAULT NULL,
+    `url` VARCHAR(45) DEFAULT NULL,
+    `stato` TINYINT(1) NOT NULL DEFAULT '0',
+    `costo` INT(4) DEFAULT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
 
@@ -232,25 +202,23 @@ CREATE TABLE `eventi` (
 CREATE TABLE `feedback` (
   `id_domanda` int(10) NOT NULL,
   `id_utente` bigint(20) NOT NULL,
-  `risposta` text
+  `id_evento` int(10) NOT NULL,
+  `risposta` text,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `organizzazioni`
---
-
 CREATE TABLE `organizzazioni` (
-  `id_org` int(10) NOT NULL,
-  `nome_org` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `organizzazioni`
 --
 
-INSERT INTO `organizzazioni` (`id_org`, `nome_org`) VALUES
+INSERT INTO `organizzazioni` (`id`, `nome`) VALUES
 (0, 'Libero'),
 (1, 'Chiesa della Sacra Mano'),
 (2, 'Tribù del lupo guardiano'),
@@ -260,20 +228,16 @@ INSERT INTO `organizzazioni` (`id_org`, `nome_org`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `partecipanti`
---
-
 CREATE TABLE `partecipanti` (
-  `id_evento` int(10) NOT NULL,
-  `id_azione` int(10) NOT NULL,
-  `id_pg` int(10) NOT NULL,
-  `id_utente` bigint(20) NOT NULL,
-  `stato` bit(1) DEFAULT b'0',
-  `note_iscrizione` text,
-  `note_azione` text,
-  `data_iscrizione_evento` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_evento` INT(10) NOT NULL,
+    `id_azione` INT(10) NOT NULL,
+    `id_pg` INT(10) NOT NULL,
+    `id_utente` BIGINT(20) NOT NULL,
+    `stato` BIT(1) DEFAULT B'0',
+    `note_iscrizione` TEXT,
+    `note_azione` TEXT,
+    `data_iscrizione_evento` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
 
@@ -282,8 +246,8 @@ CREATE TABLE `partecipanti` (
 --
 
 CREATE TABLE `personaggi` (
-  `id_personaggio` int(10) NOT NULL,
-  `nome_pg` varchar(45) NOT NULL,
+  `id` int(10) NOT NULL,
+  `nome` varchar(45) NOT NULL,
   `background` text NOT NULL,
   `note_pg` text,
   `note_staff` text,
@@ -293,41 +257,36 @@ CREATE TABLE `personaggi` (
   `religione` int(10) NOT NULL,
   `organizzazione` int(10) NOT NULL DEFAULT '0',
   `grado` int(1) NOT NULL DEFAULT '0',
-  `nome_giocatore` varchar(100) NOT NULL
+  `nome_giocatore` varchar(100) NOT NULL,
+  `data_inserimento` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `data_approvazione` datetime,
+  `data_morte` datetime 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
-
---
--- Struttura della tabella `punti_presenza`
---
 
 CREATE TABLE `punti_presenza` (
-  `id` int(10) NOT NULL,
-  `id_utente` bigint(20) NOT NULL,
-  `id_evento` int(11) NOT NULL,
-  `descrizione` varchar(50) NOT NULL,
-  `pp` int(5) NOT NULL DEFAULT '0',
-  `data` datetime NOT NULL,
-  `stato` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `id_utente` BIGINT(20) NOT NULL,
+    `id_evento` INT(11) NOT NULL,
+    `descrizione` VARCHAR(50) NOT NULL,
+    `pp` INT(5) NOT NULL DEFAULT '0',
+    `data` DATETIME NOT NULL,
+    `stato` INT(11) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `razze`
---
-
 CREATE TABLE `razze` (
-  `id_razza` int(10) NOT NULL,
-  `nome` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `razze`
 --
 
-INSERT INTO `razze` (`id_razza`, `nome`) VALUES
+INSERT INTO `razze` (`id`, `nome`) VALUES
 (1, 'Umano Fargan'),
 (2, 'Umano Salman'),
 (3, 'Umano Ayame'),
@@ -369,19 +328,15 @@ INSERT INTO `razze` (`id_razza`, `nome`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `razze_campagna`
---
-
 CREATE TABLE `razze_campagna` (
-  `id_razza` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `razze_campagna`
 --
 
-INSERT INTO `razze_campagna` (`id_razza`) VALUES
+INSERT INTO `razze_campagna` (`id`) VALUES
 (1),
 (4),
 (5),
@@ -392,14 +347,10 @@ INSERT INTO `razze_campagna` (`id_razza`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `religioni`
---
-
 CREATE TABLE `religioni` (
-  `id` int(10) NOT NULL,
-  `nome` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(50) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `religioni`
@@ -419,15 +370,11 @@ INSERT INTO `religioni` (`id`, `nome`) VALUES
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `requisiti`
---
-
 CREATE TABLE `requisiti` (
-  `id_talento` int(10) NOT NULL,
-  `id_talento_requisito` int(10) NOT NULL,
-  `flag_alternativo` bit(1) NOT NULL DEFAULT b'0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_talento` INT(10) NOT NULL,
+    `id_talento_requisito` INT(10) NOT NULL,
+    `flag_alternativo` BIT(1) NOT NULL DEFAULT B'0'
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `requisiti`
@@ -896,23 +843,36 @@ INSERT INTO `requisiti` (`id_talento`, `id_talento_requisito`, `flag_alternativo
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `talenti`
+-- Struttura della tabella `richiesta_talenti`
 --
 
-CREATE TABLE `talenti` (
+CREATE TABLE `richiesta_talenti` (
+  `id` int(10) NOT NULL,
   `id_talento` int(10) NOT NULL,
-  `nome` varchar(45) CHARACTER SET ucs2 NOT NULL,
-  `descrizione` text,
-  `area` int(10) DEFAULT NULL,
-  `flag_campagna` bit(1) DEFAULT b'0',
-  `flag_requisiti` bit(1) DEFAULT b'0'
+  `id_pg` int(10) NOT NULL,
+  `id_utente` bigint(20) NOT NULL,
+  `data_richiesta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `stato` int(1) NOT NULL DEFAULT '0',
+  `note` varchar(255),
+  `data_approvazione` datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+CREATE TABLE `talenti` (
+    `id` INT(10) NOT NULL,
+    `nome` VARCHAR(45)CHARACTER SET UCS2 NOT NULL,
+    `descrizione` TEXT,
+    `area` INT(10) DEFAULT NULL,
+    `flag_campagna` BIT(1) DEFAULT B'0',
+    `flag_requisiti` BIT(1) DEFAULT B'0'
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `talenti`
 --
 
-INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
+INSERT INTO `talenti` (`id`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
 (10, 'Armi comuni', 'il personaggio sa utilizzare ogni arma a una mano di lunghezza pari o inferiore ai 110 cm (chiunque può usare armi al di sotto dei 50 cm)', 1, b'0', b'0'),
 (11, 'Armi Grandi', 'il personaggio sa utilizzare ogni arma a due mani di lunghezza pari o inferiore ai 200 cm con una sola estremità colpente, non è mai possibile usare un’arma grande con una sola mano o con lo scudo', 1, b'0', b'1'),
 (12, 'Armi doppie', 'il personaggio sa utilizzare bastoni ferrati, doppie spade, asce o mazze di lunghezza inferiore ai 200 cm con due estremità colpenti e impugnatura al centro', 1, b'0', b'1'),
@@ -1086,7 +1046,7 @@ INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campag
 (180, 'Urlo di guerra I', 'all’inizio di ogni combattimento il personaggio può dichiarare Onda di Terrore 2!', 10, b'0', b'0'),
 (181, 'Urlo di guerra II', 'all’inizio di ogni combattimento il personaggio può dichiarare Onda di Terrore 4!', 10, b'0', b'1'),
 (182, 'Urlo di guerra III', 'all’inizio di ogni combattimento il personaggio può dichiarare Onda di Terrore 6!', 10, b'0', b'1');
-INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
+INSERT INTO `talenti` (`id`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
 (183, 'Onore', '2 gloria. Il personaggio rinuncia ai talenti di arte, vicolo e magici (non può impararli, ma può usarli se già li possiede) e inizia a seguire un rigoroso codice d\'onore di un gruppo di guerrieri presenti nella campagna o nell\'ambientazione mondiale.\r\nSe il guerriero infrange il codice deve espiare secondo lo stesso codice o morire nel tentativo. \r\n', 10, b'0', b'0'),
 (184, 'Stile d\'arme [stile crudele]', 'utilizzando questo talento con le armi in cui il PG ha Maestria si può usare lo stile d’arme prescelto, non puoi assommare a stile d\'arma il bonus di maestria. Puoi imparare un solo stile d\'arma.  Armi con spuntoni o seghettate: Dolore 6!', 10, b'0', b'1'),
 (185, 'Stile d\'arme [stile travolgente]', 'utilizzando questo talento con le armi in cui il PG ha Maestria si può usare lo stile d’arme prescelto, non puoi assommare a stile d\'arma il bonus di maestria. Puoi imparare un solo stile d\'arma.  Armi da botta: Urto! o Urto! Intenso!', 10, b'0', b'1'),
@@ -1213,7 +1173,7 @@ INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campag
 (307, 'Dono della nebbia II', 'Il personaggio può dichiarare Etereo, ma solo per attraversare ostacoli, come le pareti normalmente scalabili con il talento Lesto I senza dover nemmeno attendere i 15 secondi per ciascun lato. Marchio: capelli grigi.', 19, b'0', b'1'),
 (308, 'Dono della nebbia III', 'il personaggio è sempre Etereo! e intangibile. Inoltre non può più portare alcun oggetto, armi incluse o infliggere danni fisici. Marchio: abiti color nebbia.', 19, b'0', b'1'),
 (309, 'Ghiandole del cobra I', 'al personaggio sono nate ghiandole velenifere con le quali può secernere un veleno che applica sulle armi. In combattimento può dichiarare Acido! Marchio: denti di serpente.', 19, b'0', b'0');
-INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
+INSERT INTO `talenti` (`id`, `nome`, `descrizione`, `area`, `flag_campagna`, `flag_requisiti`) VALUES
 (310, 'Ghiandole del cobra II', 'il personaggio può sputare il suo veleno e, all’inizio del combattimento, può dichiarare Dardo di Acido Confusione 3! Marchio: coda di serpente o cappuccio da cobra o disegni sulla pelle a ricordare la pelle di un cobra reale.', 19, b'0', b'1'),
 (311, 'Ghiandole del cobra III', 'a mani nude il personaggio può dichiarare Fatale! (simulando il morso). Marchio: un altro extra tra quelli di Ghiandole del Cobra II. ', 19, b'0', b'1'),
 (312, 'Ignifugo', 'il personaggio dichiara Immune! a Fuoco!. Marchio: pelle rossa, o almeno grosse chiazze di pelle color rosso.', 19, b'0', b'0'),
@@ -1268,31 +1228,23 @@ INSERT INTO `talenti` (`id_talento`, `nome`, `descrizione`, `area`, `flag_campag
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `talenti_pg`
---
-
 CREATE TABLE `talenti_pg` (
-  `pg` int(10) NOT NULL,
-  `talento` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_pg` INT(10) NOT NULL,
+    `id_talento` INT(10) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 -- --------------------------------------------------------
 
---
--- Struttura della tabella `talenti_razza`
---
-
 CREATE TABLE `talenti_razza` (
-  `razza` int(10) NOT NULL,
-  `talento` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    `id_razza` INT(10) NOT NULL,
+    `id_talento` INT(10) NOT NULL
+)  ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 --
 -- Dump dei dati per la tabella `talenti_razza`
 --
 
-INSERT INTO `talenti_razza` (`razza`, `talento`) VALUES
+INSERT INTO `talenti_razza` (`id_razza`, `id_talento`) VALUES
 (1, 147),
 (1, 169),
 (1, 170),
@@ -1349,7 +1301,7 @@ INSERT INTO `talenti_razza` (`razza`, `talento`) VALUES
 -- Indici per le tabelle `aree_talenti`
 --
 ALTER TABLE `aree_talenti`
-  ADD PRIMARY KEY (`id_area_talenti`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `aree_talenti_razze`
@@ -1362,13 +1314,13 @@ ALTER TABLE `aree_talenti_razze`
 -- Indici per le tabelle `azioni_economiche`
 --
 ALTER TABLE `azioni_economiche`
-  ADD PRIMARY KEY (`id_azione`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `cartellini`
 --
 ALTER TABLE `cartellini`
-  ADD PRIMARY KEY (`id_cartellino`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `nome` (`nome`);
 
 --
@@ -1381,11 +1333,12 @@ ALTER TABLE `domande_feedback`
 -- Indici per le tabelle `eventi`
 --
 ALTER TABLE `eventi`
-  ADD PRIMARY KEY (`id_evento`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `feedback`
 --
+
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id_domanda`,`id_utente`);
 
@@ -1393,8 +1346,7 @@ ALTER TABLE `feedback`
 -- Indici per le tabelle `organizzazioni`
 --
 ALTER TABLE `organizzazioni`
-  ADD PRIMARY KEY (`id_org`,`nome_org`),
-  ADD KEY `id_org` (`id_org`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `partecipanti`
@@ -1407,8 +1359,8 @@ ALTER TABLE `partecipanti`
 -- Indici per le tabelle `personaggi`
 --
 ALTER TABLE `personaggi`
-  ADD PRIMARY KEY (`id_personaggio`),
-  ADD KEY `nome_pg` (`nome_pg`),
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `nome` (`nome`),
   ADD KEY `id_utente` (`id_utente`),
   ADD KEY `nome_giocatore` (`nome_giocatore`);
 
@@ -1417,22 +1369,18 @@ ALTER TABLE `personaggi`
 --
 ALTER TABLE `punti_presenza`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD UNIQUE KEY `id_3` (`id`),
-  ADD KEY `id_utente` (`id_utente`),
-  ADD KEY `id_2` (`id`);
-
+  ADD KEY `id_utente` (`id_utente`);
 --
 -- Indici per le tabelle `razze`
 --
 ALTER TABLE `razze`
-  ADD PRIMARY KEY (`id_razza`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `razze_campagna`
 --
 ALTER TABLE `razze_campagna`
-  ADD PRIMARY KEY (`id_razza`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `religioni`
@@ -1448,24 +1396,30 @@ ALTER TABLE `requisiti`
   ADD KEY `fk_TA002_REQUISITI_TA001_TALENTI1` (`id_talento_requisito`);
 
 --
+-- Indici per le tabelle `richiesta_talenti`
+--
+ALTER TABLE `richiesta_talenti`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indici per le tabelle `talenti`
 --
 ALTER TABLE `talenti`
-  ADD PRIMARY KEY (`id_talento`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `fk_TA001_TALENTI_TA003_AREE_TALENTI1_idx` (`area`);
 
 --
 -- Indici per le tabelle `talenti_pg`
 --
 ALTER TABLE `talenti_pg`
-  ADD PRIMARY KEY (`pg`,`talento`),
-  ADD KEY `pg` (`pg`) USING BTREE;
+  ADD PRIMARY KEY (`id_pg`,`id_talento`),
+  ADD KEY `pg` (`id_pg`) USING BTREE;
 
 --
 -- Indici per le tabelle `talenti_razza`
 --
 ALTER TABLE `talenti_razza`
-  ADD PRIMARY KEY (`razza`,`talento`);
+  ADD PRIMARY KEY (`id_razza`,`id_talento`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -1475,27 +1429,27 @@ ALTER TABLE `talenti_razza`
 -- AUTO_INCREMENT per la tabella `aree_talenti`
 --
 ALTER TABLE `aree_talenti`
-  MODIFY `id_area_talenti` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT per la tabella `azioni_economiche`
 --
 ALTER TABLE `azioni_economiche`
-  MODIFY `id_azione` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT per la tabella `cartellini`
 --
 ALTER TABLE `cartellini`
-  MODIFY `id_cartellino` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=405;
 --
 -- AUTO_INCREMENT per la tabella `eventi`
 --
 ALTER TABLE `eventi`
-  MODIFY `id_evento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT per la tabella `personaggi`
 --
 ALTER TABLE `personaggi`
-  MODIFY `id_personaggio` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 --
 -- AUTO_INCREMENT per la tabella `religioni`
 --
@@ -1505,7 +1459,7 @@ ALTER TABLE `religioni`
 -- AUTO_INCREMENT per la tabella `talenti`
 --
 ALTER TABLE `talenti`
-  MODIFY `id_talento` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=361;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=361;
 --
 -- Limiti per le tabelle scaricate
 --
@@ -1514,14 +1468,14 @@ ALTER TABLE `talenti`
 -- Limiti per la tabella `requisiti`
 --
 ALTER TABLE `requisiti`
-  ADD CONSTRAINT `fk_TA002_REQUISITI_TA001_TALENTI` FOREIGN KEY (`id_talento`) REFERENCES `talenti` (`id_talento`),
-  ADD CONSTRAINT `fk_TA002_REQUISITI_TA001_TALENTI1` FOREIGN KEY (`id_talento_requisito`) REFERENCES `talenti` (`id_talento`);
+  ADD CONSTRAINT `fk_TA002_REQUISITI_TA001_TALENTI` FOREIGN KEY (`id_talento`) REFERENCES `talenti` (`id`),
+  ADD CONSTRAINT `fk_TA002_REQUISITI_TA001_TALENTI1` FOREIGN KEY (`id_talento_requisito`) REFERENCES `talenti` (`id`);
 
 --
 -- Limiti per la tabella `talenti`
 --
 ALTER TABLE `talenti`
-  ADD CONSTRAINT `fk_TA001_TALENTI_TA003_AREE_TALENTI1` FOREIGN KEY (`area`) REFERENCES `aree_talenti` (`id_area_talenti`);
+  ADD CONSTRAINT `fk_TA001_TALENTI_TA003_AREE_TALENTI1` FOREIGN KEY (`area`) REFERENCES `aree_talenti` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
