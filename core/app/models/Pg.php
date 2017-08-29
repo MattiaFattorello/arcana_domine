@@ -17,10 +17,22 @@ class Pg extends \lithium\data\Model {
     ];
 
     public $hasOne = [
-        'Razze',
-        'Religioni',
-        'Organizzazioni',
-        'Iscritti'
+        'Razze' => [
+            'to'  => 'app\models\Razze',
+            'key' => ['razza' => 'id']
+        ],
+        'Religioni' => [
+            'to'  => 'app\models\Religioni',
+            'key' => ['religione' => 'id']
+        ],
+        'Organizzazioni' => [
+            'to'  => 'app\models\Organizzazioni',
+            'key' => ['organizzazione' => 'id']
+        ],
+        'Iscritti' => [
+            'to'  => 'app\models\Iscritti',
+            'key' => ['id_utente' => 'id']
+        ]
     ];
 }
 ?>

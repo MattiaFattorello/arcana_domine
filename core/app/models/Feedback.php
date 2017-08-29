@@ -8,5 +8,16 @@ class feedback extends \lithium\data\Model {
         'connection' => 'default',
         'source'     => 'feedback'
     ];
+
+    public $hasOne = [
+        'DomandeFeedback' => [
+            'to'  => 'app\models\DomandeFeedback',
+            'key' => ['id_domanda' => 'id']
+        ],
+        'Iscritti' => [
+            'to'  => 'app\models\Iscritti',
+            'key' => ['id_utente' => 'id']
+        ]
+    ];
 }
 ?>

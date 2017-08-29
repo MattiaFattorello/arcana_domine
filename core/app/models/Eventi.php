@@ -8,5 +8,20 @@ class Eventi extends \lithium\data\Model {
         'connection' => 'default',
         'source'     => 'eventi'
     ];
+
+    public $hasMany = [
+        'Partecipanti' => [
+            'to'  => 'app\models\Partecipanti',
+            'key' => ['id' => 'id_evento']
+        ],
+        'DomandeFeedback' => [
+            'to'  => 'app\models\DomandeFeedback',
+            'key' => ['id' => 'id_evento']
+        ],
+        'Feedback' => [
+            'to'  => 'app\models\Feedback',
+            'key' => ['id' => 'id_evento']
+        ]
+    ];
 }
 ?>

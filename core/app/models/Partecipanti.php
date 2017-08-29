@@ -9,7 +9,7 @@ class Partecipanti extends \lithium\data\Model {
         'source'     => 'partecipanti'
     ];
 
-    protected $_belongsTo = [
+    protected $hasOne = [
         'Eventi' => [
             'to'  => 'app\model\Eventi',
             'key' => 'id_evento'
