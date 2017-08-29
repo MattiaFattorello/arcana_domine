@@ -27,19 +27,6 @@ use app\models\Organizzazioni;
  */
 class OrganizzazioniController extends \lithium\action\Controller {
 
-	/*public function view() {
-		$options = [];
-		$path = func_get_args();
-
-		if (!$path || $path === ['home']) {
-			$path = ['home'];
-			$options['compiler'] = ['fallback' => true];
-		}
-
-		$options['template'] = join('/', $path);
-		return $this->render($options);
-	}*/	
-
 	public function index(){
 		$organizzazioni = Organizzazioni::find('all');
 		return json_encode($organizzazioni->data());
@@ -59,7 +46,7 @@ class OrganizzazioniController extends \lithium\action\Controller {
 			//error
 		}
 
-		return false;		
+		return json_encode(null);		
 	}
 	
 	public function update(){
@@ -69,8 +56,6 @@ class OrganizzazioniController extends \lithium\action\Controller {
 	public function delete(){
 
 	}
-
-
 }
 
 ?>
