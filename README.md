@@ -80,7 +80,7 @@ Le comunicazioni tra wordpress e i servizi REST di backend avverrà a livello fr
 
  
 # Prassi
-Per i file PHP valgono le specifiche richieste da [lithium] (http://li3.me/docs/book/specs/1.x/)
+Per i file PHP valgono le specifiche richieste da [lithium](http://li3.me/docs/book/specs/1.x/)
 
 
 # Future implementazioni
