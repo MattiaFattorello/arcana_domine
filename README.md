@@ -79,11 +79,8 @@ Le comunicazioni tra wordpress e i servizi REST di backend avverrà a livello fr
 # Struttura
 
  
-
 # Prassi
-
-## Naming convention
-Funzioni e nomi variabili camelCase, nomi classi CamelCase con prima lettera Maiuscola. Nomi tabelle MAIUSCOLO separato da _ , nomi campi minuscolo separato da _ .
+Per i file PHP valgono le specifiche richieste da [lithium] (http://li3.me/docs/book/specs/1.x/)
 
 
 # Future implementazioni
