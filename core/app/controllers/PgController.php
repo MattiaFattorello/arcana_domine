@@ -28,19 +28,32 @@ use app\models\TalentiPg;
  */
 class PgController extends \lithium\action\Controller {
 
+	/*
+	* lista di tutti i PG
+	*/
 	public function index(){
-		$pgs = Pg::find('all');
+		$pgs = Pg::find('all', [
+			'with'  => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni'], #'Iscritti'] 
+			'order'	=> ['id']
+		]);
+
 		return json_encode($pgs->data());
 	}
 
+	/*
+	* funzione per ottenere tutte le informazioni su un PG
+	*/
 	public function get($id){
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', ]#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
 
+	/*
+	* funzione per aggiungere un nuovo pg
+	*/
 	public function add(){
 		$pg = Pg::create();
 		
@@ -65,7 +78,7 @@ class PgController extends \lithium\action\Controller {
 
 			$pg_saved = Pg::find('all', [
 				'conditions' => ['id' => $id],
-				'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', ]#'Iscritti'] 
+				'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
 			]);
 			return json_encode($pg_saved->data());
 		}else{
@@ -75,12 +88,133 @@ class PgController extends \lithium\action\Controller {
 		return json_encode(null);		
 	}
 	
-	public function update(){
+	/*
+	* funzione per impostare lo stato su morto, con la possibilità di modificare le note del personaggio
+	* ritorna i dati del pg appena modificato
+	*/
+	public function uccidi($id, $note_pg, $note_staff){
+		Pg::update([
+			'stato' => 3,
+			'note_pg' => $note_pg,
+			'note_staff' => $note_staff 
+		],
+		[
+			'id' => $id 
+		]);
 
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
 	}
 
-	public function delete(){
+	/*
+	* funzione per impostare lo stato su parcheggiato, con la possibilità di modificare le note del personaggio
+	*/
+	public function parcheggia($id, $note_pg, $note_staff){
+		Pg::update([
+			'stato' => 2,
+			'note_pg' => $note_pg,
+			'note_staff' => $note_staff 
+		],
+		[
+			'id' => $id 
+		]);
 
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
+	}
+	
+	/*
+	* funzione per impostare lo stato su confermato, con la possibilità di modificare le note del personaggio e il bg
+	*/
+	public function conferma($id, $note_pg, $note_staff, $bg){
+		Pg::update([
+			'stato' => 1,
+			'note_pg' => $note_pg,
+			'note_staff' => $note_staff,
+			'background' => $bg 
+		],
+		[
+			'id' => $id 
+		]);
+
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
+	}
+
+	/*
+	* lista talento pg
+	*/
+	public function talentiPg($id){
+		$talenti = TalentiPg::find('all', [
+			'conditions' => ['id_pg' => $id],
+			'with'       => ['Talenti'],
+			'order'		 => ['id_talento']			
+		]);
+		return json_encode($talenti->data());
+	}	
+
+	/*
+	* funzione per aggiungere un talento ad un PG
+	*/
+	public function aggiungiTalento($id, $id_talento){
+		$talento = TalentiPg::create();
+		$talento->save([
+			'id_pg' => $id,
+			'id_talento' => $id_talento
+		]);
+
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
+	}
+
+	/*
+	* funzione per rimuovere un talento ad un PG
+	*/
+	public function rimuoviTalento($id, $id_talento){
+		$talento = TalentiPg::find('all', [
+			'conditions' => [
+				'id_pg' => $id,
+				'id_talento' => $id_talento				
+			],
+		]);
+		$talento->delete();
+
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
+	}
+
+	/*
+	* funzione per cambiare un talento ad un PG
+	*/
+	public function cambiaTalento($id, $id_talento_old, $id_talento_new){
+		$TalentiPg::update([
+			'id_talento' => $id_talento_new
+		],
+		[
+			'id_pg' => $id,
+			'id_talento' => $id_talento_old
+		]);
+
+		$pg = Pg::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+		]);
+		return json_encode($pg->data());
 	}
 }
 
