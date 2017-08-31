@@ -13,7 +13,11 @@ class Partecipanti extends \lithium\data\Model {
         'Eventi' => [
             'to'  => 'app\model\Eventi',
             'key' => 'id_evento'
-        ]
+        ],
+        'AzioniEconomiche' => [
+            'to'  => 'app\models\AzioniEconomiche',
+            'key' => ['id_azione' => 'id']
+        ] 
     ];
 }
 ?>

@@ -10,6 +10,8 @@
 namespace app\controllers;
 
 use app\models\Eventi;
+use app\models\Partecipanti;
+use app\models\Feedback;
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
  * folder.
@@ -27,35 +29,77 @@ use app\models\Eventi;
  */
 class EventiController extends \lithium\action\Controller {
 
+	/*
+	* lista di tutti gli eventi
+	*/
 	public function index(){
 		$eventi = Eventi::find('all');
 		return json_encode($eventi->data());
 	}
 
+	/*
+	* funzione per ottenere tutte le informazioni su un Evento
+	*/
 	public function get($id){
-		$evento = Eventi::find('all', ['conditions' => ['id_org' => $id]]);
+		$evento = Eventi::find('all', [
+			'conditions' => ['id' => $id],
+			'with'       => ['Partecipanti', 'Partecipanti.Iscritti', 'Partecipanti.AzioniEconomiche']
+		]);
 		return json_encode($evento->data());
 	}
 
+	/*
+	* funzione per creare un nuovo evento
+	*/
 	public function add(){
 		$evento = Eventi::create();
 		
 		if($this->request->data && $evento->save($this->request->data)) {
+			$evento_salvato = Eventi::find('all', [
+				'conditions' => ['id' => $evento->data('id')],
+			]);
+			return json_encode($evento_salvato->data());
+		}else{
+			//error
+		}
+
+		return json_encode(null);
+	}
+
+	/*
+	* funzione per iscrivere un Giocatore ad un evento
+	*/
+	public function partecipa($id){
+		$partecipante = Partecipanti::create();
+		$data = $this->request->data;
+		$data['id_evento'] = $id;  
+		if($partecipante->save($data)) {
+			$evento = Eventi::find('all', [
+				'conditions' => ['id' => $evento->data('id')],
+				'with'       => ['Partecipanti', 'Partecipanti.Iscritti', 'Partecipanti.AzioniEconomiche']
+			]);
 			return json_encode($evento->data());
 		}else{
 			//error
 		}
 
-		return json_encode(null);		
+		return json_encode(null);
+	}
+
+	public function assegnaPP($id){
+		Eventi::update([
+			'pp' => $this->request->data['pp'],
+		],
+		[
+			'id' => $id 
+		]);
+
+		$evento = Eventi::find('all', [
+			'conditions' => ['id' => $id],
+		]);
+		return json_encode($evento->data());
 	}
 	
-	public function update(){
-
-	}
-
-	public function delete(){
-
-	}
 }
 
 ?>

@@ -209,6 +209,23 @@ CREATE TABLE `feedback` (
 
 -- --------------------------------------------------------
 
+--
+-- Struttura della tabella `iscritti`
+--
+
+CREATE TABLE `iscritti` (
+  `id` bigint(20) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) NOT NULL,
+  `data_prima_iscrizione` datetime,
+  `data_ultima_iscrizione` datetime,
+  `data_ultima_csen` datetime,
+  `data_nascita` datetime,
+  `codice_fiscale` varchar(20)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
 CREATE TABLE `organizzazioni` (
     `id` INT(10) NOT NULL,
     `nome` VARCHAR(45) NOT NULL
@@ -1341,6 +1358,13 @@ ALTER TABLE `eventi`
 
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id_domanda`,`id_utente`);
+
+--
+-- Indici per le tabelle `iscritti`
+--
+
+ALTER TABLE `iscritti`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `organizzazioni`

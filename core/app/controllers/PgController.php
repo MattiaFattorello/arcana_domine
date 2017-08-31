@@ -11,6 +11,7 @@ namespace app\controllers;
 
 use app\models\Pg;
 use app\models\TalentiPg;
+use app\models\RichiestaTalenti;
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
  * folder.
@@ -33,7 +34,7 @@ class PgController extends \lithium\action\Controller {
 	*/
 	public function index(){
 		$pgs = Pg::find('all', [
-			'with'  => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni'], #'Iscritti'] 
+			'with'  => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'], 
 			'order'	=> ['id']
 		]);
 
@@ -46,7 +47,7 @@ class PgController extends \lithium\action\Controller {
 	public function get($id){
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -78,7 +79,7 @@ class PgController extends \lithium\action\Controller {
 
 			$pg_saved = Pg::find('all', [
 				'conditions' => ['id' => $id],
-				'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+				'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 			]);
 			return json_encode($pg_saved->data());
 		}else{
@@ -104,7 +105,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -124,7 +125,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -145,7 +146,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -174,7 +175,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -193,7 +194,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}
@@ -212,7 +213,7 @@ class PgController extends \lithium\action\Controller {
 
 		$pg = Pg::find('all', [
 			'conditions' => ['id' => $id],
-			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni']#'Iscritti'] 
+			'with'       => ['TalentiPg.Talenti', 'Razze', 'Religioni', 'Organizzazioni', 'Iscritti'] 
 		]);
 		return json_encode($pg->data());
 	}

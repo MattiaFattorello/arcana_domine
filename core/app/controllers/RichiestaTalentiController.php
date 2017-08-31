@@ -9,7 +9,7 @@
 
 namespace app\controllers;
 
-use app\models\Organizzazioni;
+use app\models\RichiestaTalenti;
 /**
  * This controller is used for serving static pages by name, which are located in the `/views/pages`
  * folder.
@@ -25,23 +25,23 @@ use app\models\Organizzazioni;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class OrganizzazioniController extends \lithium\action\Controller {
+class RichiestaTalentiController extends \lithium\action\Controller {
 
 	public function index(){
-		$organizzazioni = Organizzazioni::find('all');
-		return json_encode($organizzazioni->data());
+		$richieste = RichiestaTalenti::find('all');
+		return json_encode($richieste->data());
 	}
 
 	public function get($id){
-		$organizzazioni = Organizzazioni::find('all', ['conditions' => ['id_org' => $id]]);
-		return json_encode($organizzazioni->data());
+		$richiesta = RichiestaTalenti::find('all', ['conditions' => ['id' => $id]]);
+		return json_encode($richiesta->data());
 	}
 
 	public function add(){
-		$organizzazione = Organizzazioni::create();
+		$richiesta = RichiestaTalenti::create();
 		
-		if($this->request->data && $organizzazione->save($this->request->data)) {
-			return json_encode($organizzazione->data());
+		if($this->request->data && $richiesta->save($this->request->data)) {
+			return json_encode($richiesta->data());
 		}else{
 			//error
 		}
@@ -49,13 +49,9 @@ class OrganizzazioniController extends \lithium\action\Controller {
 		return json_encode(null);		
 	}
 	
-	public function update(){
+	public function approva($id){}
 
-	}
-
-	public function delete(){
-
-	}
+	public function rifiuta($id){}
 }
 
 ?>
