@@ -67,6 +67,8 @@ Plug-in per SSO con google e facebook
 ## Fpdf - http://www.fpdf.org/
 Libreria php per la creazione di pdf. Usato per la creazione di cartellini.
 
+<del>
+
 ## PHP http client - http://phphttpclient.com
 Libreria per la gestione di chiamate rest
 
@@ -75,6 +77,10 @@ Microframework per la creazione delle API
 
 ## Angular js - https://angular.io/
 Le comunicazioni tra wordpress e i servizi REST di backend avverrà a livello frontend attraverso una serie di componenti Angular 2. L’obbiettivo di questa implementazione è sfruttare la possibilità di riusare parte del codice per altri progetti (versione mobile)
+
+</del>
+
+
 
 # Struttura
 
