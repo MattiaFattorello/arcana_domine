@@ -27,7 +27,7 @@ use app\models\Feedback;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class EventiController extends \lithium\action\Controller {
+class EventiController extends \app\controllers\CryptedController {
 
 	/*
 	* lista di tutti gli eventi

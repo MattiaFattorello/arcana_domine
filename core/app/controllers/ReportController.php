@@ -24,7 +24,7 @@ namespace app\controllers;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class ReportController extends \lithium\action\Controller {
+class ReportController extends \app\controllers\CryptedController {
 
 	public function index(){
 		$reports = Report::find('all');

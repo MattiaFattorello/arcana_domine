@@ -25,7 +25,7 @@ use app\models\Iscritti;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class IscrittiController extends \lithium\action\Controller {
+class IscrittiController extends \app\controllers\CryptedController {
 
 	public function index(){
 		$iscritti = Iscritti::find('all');

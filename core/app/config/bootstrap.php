@@ -55,7 +55,7 @@ require __DIR__ . '/bootstrap/cache.php';
 /**
  * Include this file if your application uses one or more database connections.
  */
- require __DIR__ . '/bootstrap/connections.php';
+require __DIR__ . '/bootstrap/connections.php';
 
 /**
  * This file contains configuration for session (and/or cookie) storage, and user or web service
@@ -75,6 +75,11 @@ require __DIR__ . '/bootstrap/cache.php';
  * including converting data to and from different formats, and handling static media assets.
  */
 // require __DIR__ . '/bootstrap/media.php';
+
+/**
+ * This file contains configurations for handling crypted data inside requests.
+ */
+require __DIR__ . '/bootstrap/crypt.php';
 
 /**
  * This file configures console filters and settings, specifically output behavior and coloring.

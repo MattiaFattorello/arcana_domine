@@ -25,7 +25,7 @@ use app\models\RichiestaTalenti;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class RichiestaTalentiController extends \lithium\action\Controller {
+class RichiestaTalentiController extends \app\controllers\CryptedController {
 
 	public function index(){
 		$richieste = RichiestaTalenti::find('all');

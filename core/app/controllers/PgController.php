@@ -27,7 +27,7 @@ use app\models\RichiestaTalenti;
  * For example, browsing to `/pages/about/company` will render
  * `/views/pages/about/company.html.php`.
  */
-class PgController extends \lithium\action\Controller {
+class PgController extends \app\controllers\CryptedController {
 
 	/*
 	* lista di tutti i PG
