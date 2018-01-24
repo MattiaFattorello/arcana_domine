@@ -60,8 +60,9 @@ class PgController extends \app\controllers\CryptedController {
 
 		if($this->request->data && $pg->save($this->request->data)) {
 			$id = $pg->data('id');
-			$i = 1;
-			while ($i <= 6){
+
+		  //6 talenti alla creazione
+			for($i = 1; $i<= 6; $i++){
 				if(isset($this->request->data['talento_'.$i])){
 					$data = [
 						'id_pg' => $id,
@@ -73,8 +74,6 @@ class PgController extends \app\controllers\CryptedController {
 					$a = $talento_pg->save($data);
 					print_r($a);
 				}
-
-				$i++;
 			}
 
 			$pg_saved = Pg::find('all', [
@@ -243,7 +242,7 @@ class PgController extends \app\controllers\CryptedController {
 		if(!isUserInRole('staff')){
 			return json_encode("Access Denied");
 		};
-		
+
 		TalentiPg::update([
 			'id_talento' => $id_talento_new
 		],
