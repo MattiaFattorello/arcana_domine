@@ -93,7 +93,14 @@ class PgController extends \app\controllers\CryptedController {
 	* funzione per impostare lo stato su morto, con la possibilità di modificare le note del personaggio
 	* ritorna i dati del pg appena modificato
 	*/
-	public function uccidi($id, $note_pg, $note_staff){
+	public function uccidi($id){
+		$note_pg = $this->request->data['note_pg'];
+		$note_staff = $this->request->data['note_staff'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+
 		Pg::update([
 			'stato' => 3,
 			'note_pg' => $note_pg,
@@ -113,7 +120,14 @@ class PgController extends \app\controllers\CryptedController {
 	/*
 	* funzione per impostare lo stato su parcheggiato, con la possibilità di modificare le note del personaggio
 	*/
-	public function parcheggia($id, $note_pg, $note_staff){
+	public function parcheggia($id){
+		$note_pg = $this->request->data['note_pg'];
+		$note_staff = $this->request->data['note_staff'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+
 		Pg::update([
 			'stato' => 2,
 			'note_pg' => $note_pg,
@@ -133,7 +147,15 @@ class PgController extends \app\controllers\CryptedController {
 	/*
 	* funzione per impostare lo stato su confermato, con la possibilità di modificare le note del personaggio e il bg
 	*/
-	public function conferma($id, $note_pg, $note_staff, $bg){
+	public function conferma($id){
+		$note_pg = $this->request->data['note_pg'];
+		$note_staff = $this->request->data['note_staff'];
+		$bg = $this->request->data['bg'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+
 		Pg::update([
 			'stato' => 1,
 			'note_pg' => $note_pg,
@@ -166,7 +188,13 @@ class PgController extends \app\controllers\CryptedController {
 	/*
 	* funzione per aggiungere un talento ad un PG
 	*/
-	public function aggiungiTalento($id, $id_talento){
+	public function aggiungiTalento($id){
+		$id_talento = $this->request->data['id_talento'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+
 		$talento = TalentiPg::create();
 		$talento->save([
 			'id_pg' => $id,
@@ -183,7 +211,13 @@ class PgController extends \app\controllers\CryptedController {
 	/*
 	* funzione per rimuovere un talento ad un PG
 	*/
-	public function rimuoviTalento($id, $id_talento){
+	public function rimuoviTalento($id){
+		$id_talento = $this->request->data['id_talento'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+
 		$talento = TalentiPg::find('all', [
 			'conditions' => [
 				'id_pg' => $id,
@@ -202,8 +236,15 @@ class PgController extends \app\controllers\CryptedController {
 	/*
 	* funzione per cambiare un talento ad un PG
 	*/
-	public function cambiaTalento($id, $id_talento_old, $id_talento_new){
-		$TalentiPg::update([
+	public function cambiaTalento($id){
+		$id_talento_old = $this->request->data['id_talento_old'];
+		$id_talento_new = $this->request->data['id_talento_new'];
+
+		if(!isUserInRole('staff')){
+			return json_encode("Access Denied");
+		};
+		
+		TalentiPg::update([
 			'id_talento' => $id_talento_new
 		],
 		[
