@@ -1,5 +1,4 @@
 <?php
-
 namespace app\controllers;
 
 class CryptedController extends \lithium\action\Controller {

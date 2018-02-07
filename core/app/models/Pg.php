@@ -11,7 +11,8 @@ class Pg extends \lithium\data\Model {
 
 	protected $_meta = [
 		'connection' => 'default',
-		'source'     => 'personaggi'
+		'source'     => 'personaggi',
+		'key'				 => ['id', 'id_campagna']
 	];
 
 	public $hasMany = [

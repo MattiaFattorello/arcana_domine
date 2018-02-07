@@ -93,10 +93,11 @@ class PgController extends \app\controllers\CryptedController {
 	* ritorna i dati del pg appena modificato
 	*/
 	public function uccidi($id){
+		$campagna = $this->request->data['id_campagna'];
 		$note_pg = $this->request->data['note_pg'];
 		$note_staff = $this->request->data['note_staff'];
 
-		if(!isUserInRole('staff')){
+		if(!isUserInRole('staff_'.$campagna)){
 			return json_encode("Access Denied");
 		};
 
